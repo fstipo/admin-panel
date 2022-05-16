@@ -5,3 +5,8 @@
 .header__title {
   font-family: 'Roboto', sans-serif;
 }
+
+.horizontal__line {
+  margin-left: 25px;
+  margin-right: 25px;
+}
