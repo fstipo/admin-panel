@@ -7,9 +7,7 @@ const Home = () => {
   return (
     <Container>
       <Sidebar />
-      <div class="col py-3">
-        <Header name="Home" icon="house-door" />
-      </div>
+      <Header name="Home" icon="house-door" />
     </Container>
   );
 };

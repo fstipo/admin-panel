@@ -9,19 +9,15 @@
 }
 
 .horizontal__line {
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-top: -6px;
+  margin-bottom: 30px;
 }
 
-nav {
-  min-width: 200px;
+.side.col-2 {
+  width: 228px;
+  /* width: 131px; */
 }
 
-.hr {
-  border-color: #eeeeee -moz-use-text-color #ffffff;
-  border-style: solid none;
-  border-width: 1px 0;
-  margin: 18px 0;
-  width: 50px;
-  background-color: aqua;
+.col-2.sidebar__small {
+  width: 131px;
 }

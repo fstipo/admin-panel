@@ -3,56 +3,87 @@ import '../App.css';
 
 export const NavEl = ({ title, icon }) => {
   return (
-    <li className="nav-item h5">
-      <a href="/" class="nav-link align-middle px-0 text-white">
+    <li className=" list-inline-item h5">
+      <a
+        href="/"
+        className="d-flex align-items-center px-0 text-white text-decoration-none"
+      >
         <i className={`ms-3 fs-2 bi-${icon} pe-2`}></i>
-        <span className="ms-1 d-none d-md-inline">{title}</span>
+        <span className="navbar__title ms-1 d-none d-xl-inline">{title}</span>
       </a>
     </li>
   );
 };
 
-const Sidebar = ({ title }) => {
+const Sidebar = ({ title, bootstrap }) => {
+  const collapseNavbarHandler = (e) => {
+    e.preventDefault();
+    const logoTitle = document.querySelector('.logo__title');
+    const navbarTitleList = document.querySelectorAll('.navbar__title');
+    const collapseBtnTitle = document.querySelector('.collapseBtn__title');
+    const sidebar = document.querySelector('.side');
+    navbarTitleList.forEach((el) => el.classList.toggle('d-xl-inline'));
+    logoTitle.classList.toggle('d-xl-inline');
+    collapseBtnTitle.classList.toggle('d-xl-inline');
+    sidebar.classList.toggle('sidebar__small');
+    //   // console.log(navbarTitle);
+    //   // navbarTitle.classList.toggle('d-xl-inline');
+    //   console.log('Hello');
+
+    //   //   // collapseBtn.addEventListener('click', () => {
+    //   //   //   linkA.forEach((el) => el.classList.toggle('collapse'));
+    //   //   //   sidebar.classList.toggle('collapsed');
+  };
   return (
     <>
-      <div class="col-3 px-sm-2 px-0 bg-dark">
-        <div class="d-flex flex-column align-items-center align-items-md-start px-3 pt-3  min-vh-100 display-6">
+      <aside
+        className="side
+        col-2 px-xl-2 px-0 bg-dark"
+        id="collapseExample"
+      >
+        <div className="d-flex flex-column align-items-center align-items-xl-start  pt-3  min-vh-100 display-6">
           <a
             href="/"
-            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+            className="logo ps-3 d-flex align-items-center pb-3 mb-xl-0 me-xl-auto text-white text-decoration-none"
           >
             <i className="bi bi-dice-5 me-3" role="img" aria-label="dice-5"></i>
-            <span className="d-none d-md-inline">Logo</span>
+            <span className=" logo__title d-none d-xl-inline">Logo</span>
           </a>
-          <nav className="mt-4">
-            <ul>
-              <div>
-                <NavEl title="Home" icon="house-door" />
-                <NavEl className="pb-4" title="Project" icon="folder2-open" />
-              </div>
-              <hr class="col-6 col-md-12 text-sm-start align-self-center text-white" />
-              <div>
-                <NavEl title="Dashboard" icon="speedometer2" />
-                <NavEl title="Orders" icon="table" />
-                <NavEl title="Products" icon="grid" />
-                <NavEl title="Customers" icon="person-circle" />
-              </div>
+          <hr className="horizontal__line shadow-sm p-1  bg-body rounded col-6 col-xl-12 text-white align-self-center text-xl-start" />
+          <nav className=" mt-4 px-2">
+            <ul className="list-inline d-flex flex-column">
+              <NavEl title="Home" icon="house-door" />
+              <NavEl className="" title="Project" icon="folder2-open" />
+
+              <hr className="horizontal__line col-6 col-xl-12 text-white align-self-center text-xl-start" />
+
+              <NavEl title="Dashboard" icon="speedometer2" />
+              <NavEl title="Orders" icon="table" />
+              <NavEl title="Products" icon="grid" />
+              <NavEl title="Customers" icon="person-circle" />
+              <hr className="horizontal__line col-6 col-xl-12 text-white align-self-center text-xl-start" />
             </ul>
           </nav>
-          <hr class="col-6 col-md-10 text-white align-self-center text-sm-start mt-4" />
+
           <button
-            className="btn btn-link"
-            title="Collapse"
+            className="collapse__btn btn btn-link text-decoration-none"
+            title="collapse"
             icon="chevron-double-left"
             type="button"
+            onClick={collapseNavbarHandler}
           >
-            <a href="/" class="nav-link align-middle px-0 text-white">
+            <a
+              href="/"
+              className="nav-link d-flex align-items-center px-0 text-white "
+            >
               <i className={`fs-2 bi bi-chevron-double-left pe-2`}></i>
-              <span className="ms-1 d-none d-md-inline">Collapse</span>
+              <span className="collapseBtn__title d-none d-xl-inline h5">
+                Collapse
+              </span>
             </a>
           </button>
         </div>
-      </div>
+      </aside>
     </>
   );
 };
