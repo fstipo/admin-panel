@@ -9,7 +9,7 @@ const Header = ({ name, icon }) => {
           <i className={`bi bi-${icon}`}></i>
           <span className="ms-4">{name}</span>
         </h2>
-        <hr className="horizontal__line" />
+        <hr className="mx-3" />
       </header>
     </div>
   );

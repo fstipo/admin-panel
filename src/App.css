@@ -44,7 +44,9 @@ hr {
 }
 
 .active {
-  padding: 12px 24px;
+  padding-left: 10px;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .navigation__collapse-button {

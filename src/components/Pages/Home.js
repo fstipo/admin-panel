@@ -6,7 +6,6 @@ import Header from '../UI/Header';
 const Home = () => {
   return (
     <Container>
-      <Sidebar />
       <Header name="Home" icon="house-door" />
     </Container>
   );
