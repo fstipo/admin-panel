@@ -4,20 +4,60 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-.header__title {
+body {
   font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.section__navigation {
+  max-width: 14rem;
+}
+
+.section__navigation.collapsed {
+  max-width: 6rem;
+}
+
+.section__navigation.collapsed .navigation__link-title {
+  display: none;
+}
+
+.navigation__logo--text {
+  font-size: 1.8rem;
+}
+
+.navigation__box {
+  margin-left: 1.5rem;
+  align-items: start;
+}
+
+.section__navigation.collapsed .navigation__box {
+  align-items: center;
+  margin-left: 0px;
+}
+hr {
+  align-self: start;
+}
+
+.section__navigation.collapsed hr {
+  align-self: center;
+}
+
+.active {
+  padding: 12px 24px;
+}
+
+.navigation__collapse-button {
+  transform: rotate(0deg);
+  transition: all 0.5ms ease-out;
+}
+
+.section__navigation.collapsed .navigation__collapse-button {
+  transform: rotate(-180deg);
 }
 
 .horizontal__line {
-  margin-top: -6px;
-  margin-bottom: 30px;
-}
-
-.side.col-2 {
-  width: 228px;
-  /* width: 131px; */
-}
-
-.col-2.sidebar__small {
-  width: 131px;
+  width: 98%;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
