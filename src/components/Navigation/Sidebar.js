@@ -1,6 +1,6 @@
 import React from 'react';
-import '../App.css';
-import NavigationLink from './UI/NavigationLink';
+import '../../App.css';
+import NavigationLink from '../UI/NavigationLink';
 
 const Sidebar = () => {
   const collapseNavbarHandler = (e) => {

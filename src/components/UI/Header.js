@@ -3,7 +3,7 @@ import '../../App.css';
 
 const Header = ({ name, icon }) => {
   return (
-    <div className="section__main col">
+    <>
       <header>
         <h2 className="display-5 px-5 pt-2 text-secondary ">
           <i className={`bi bi-${icon}`}></i>
@@ -11,7 +11,7 @@ const Header = ({ name, icon }) => {
         </h2>
         <hr className="mx-3" />
       </header>
-    </div>
+    </>
   );
 };
 
