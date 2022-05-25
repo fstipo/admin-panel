@@ -44,8 +44,8 @@ const Sidebar = () => {
             type="button"
             onClick={collapseNavbarHandler}
           >
-            <i className="bi bi-chevron-double-left h3"></i>
-            <span className="navigation__link-title ms-2 h3">Collapse</span>
+            <i className="bi bi-chevron-double-left h5"></i>
+            <span className="navigation__link-title ms-2 h5">Collapse</span>
           </button>
         </ul>
       </nav>

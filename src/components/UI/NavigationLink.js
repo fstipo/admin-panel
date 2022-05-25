@@ -4,10 +4,10 @@ import '../../App.css';
 
 const NavigationLink = ({ icon, title, to }) => {
   return (
-    <li className="nav-item h3">
-      <NavLink className="nav-link px-2 d-block" to={to}>
+    <li className="nav-item h5">
+      <NavLink className="nav-link px-4" to={to}>
         <i className={`bi bi-${icon}`}></i>
-        <span className="navigation__link-title ms-2">{title}</span>
+        <span className="navigation__link-title ms-3">{title}</span>
       </NavLink>
     </li>
   );
