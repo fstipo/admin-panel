@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../App.css';
 import NavigationLink from '../UI/NavigationLink';
 
@@ -13,18 +14,18 @@ const Sidebar = () => {
     <div className="section__navigation col bg-dark">
       <nav className="navbar-dark pt-4 d-flex flex-column">
         <div className="d-flex navigation__logo--box m-auto mb-4 text-danger">
-          <a
+          <Link
             className="navigation__logo--text navbar-brand d-inline-block m-auto text-light "
-            href="/"
+            to="/"
           >
             <i className="bi bi-dice-5" role="img" aria-label="dice-5"></i>
             <span className="navigation__link-title ms-2">Logo</span>
-          </a>
+          </Link>
         </div>
-        <ul className="navigation__box navbar-nav d-flex flex-column nav-pills">
+        <ul className="navigation__box navbar-nav d-flex flex-column nav-pills ">
           <NavigationLink title="Home" icon="house-door" to="/" />
           <NavigationLink title="Project" icon="folder2-open" to="/projects" />
-          {/* <hr className="text-white border-2 w-75 mb-5" /> */}
+          <hr className="text-white border-2 w-75 mb-5" />
           <NavigationLink
             title="Dashboard"
             icon="speedometer2"
@@ -37,14 +38,14 @@ const Sidebar = () => {
             icon="person-circle"
             to="/costumers"
           />
-          <hr className="text-white border-2 w-75" />
+          <hr className="text-white border-2 w-75 mb-5" />
           <button
-            className="btn navigation__collapse-button nav-link"
+            className="navigation__collapse-button nav-link"
             type="button"
             onClick={collapseNavbarHandler}
           >
-            <i className="bi bi-chevron-double-left"></i>
-            <span className="navigation__link-title ms-2">Collapse</span>
+            <i className="bi bi-chevron-double-left h3"></i>
+            <span className="navigation__link-title ms-2 h3">Collapse</span>
           </button>
         </ul>
       </nav>
