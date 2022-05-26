@@ -43,12 +43,6 @@ hr {
   align-self: center;
 }
 
-.active {
-  padding-left: 10px;
-  padding-top: 40px;
-  padding-bottom: 20px;
-}
-
 .navigation__collapse-button {
   transform: rotate(0deg);
   transition: all 0.5ms ease-out;

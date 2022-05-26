@@ -22,31 +22,37 @@ const Sidebar = () => {
             <span className="navigation__link-title ms-2">Logo</span>
           </Link>
         </div>
-        <ul className="navigation__box navbar-nav d-flex flex-column nav-pills ">
-          <NavigationLink title="Home" icon="house-door" to="/" />
-          <NavigationLink title="Project" icon="folder2-open" to="/projects" />
-          <hr className="text-white border-2 w-75 mb-5" />
-          <NavigationLink
-            title="Dashboard"
-            icon="speedometer2"
-            to="/dashboard"
-          />
-          <NavigationLink title="Orders" icon="table" to="/orders" />
-          <NavigationLink title="Products" icon="grid" to="/products" />
-          <NavigationLink
-            title="Costumers"
-            icon="person-circle"
-            to="/costumers"
-          />
-          <hr className="text-white border-2 w-75 mb-5" />
-          <button
-            className="navigation__collapse-button nav-link"
-            type="button"
-            onClick={collapseNavbarHandler}
-          >
-            <i className="bi bi-chevron-double-left h5"></i>
-            <span className="navigation__link-title ms-2 h5">Collapse</span>
-          </button>
+        <ul className="navigation__box navbar-nav flex-column  nav-pills d-flex ">
+          <div className="d-grid">
+            <NavigationLink title="Home" icon="house-door" to="/" />
+            <NavigationLink
+              title="Projects"
+              icon="folder2-open"
+              to="/projects"
+            />
+            <hr className="text-white border-2 w-75 mb-5" />
+            <NavigationLink
+              title="Dashboard"
+              icon="speedometer2"
+              to="/dashboard"
+            />
+            <NavigationLink title="Orders" icon="table" to="/orders" />
+            <NavigationLink title="Products" icon="grid" to="/products" />
+            <NavigationLink
+              title="Costumers"
+              icon="person-circle"
+              to="/costumers"
+            />
+            <hr className="text-white border-2 w-75 mb-5" />
+            <button
+              className="navigation__collapse-button nav-link"
+              type="button"
+              onClick={collapseNavbarHandler}
+            >
+              <i className="bi bi-chevron-double-left h5"></i>
+              <span className="navigation__link-title ms-2 h5">Collapse</span>
+            </button>
+          </div>
         </ul>
       </nav>
     </div>
