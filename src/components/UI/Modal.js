@@ -7,11 +7,12 @@ const ModalShow = (props) => {
       <Modal show={props.show} onHide={props.handleClose}>
         <Modal.Header className=" btn-dark">
           <Modal.Title>
-            {props.data.first} {props.data.last}
+            {/* {props.data.first} {props.data.last} */}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ul>
+          aaaaaa
+          {/* <ul>
             <li>
               <strong>First Name:&nbsp;</strong>
               {props.data.first}
@@ -31,7 +32,7 @@ const ModalShow = (props) => {
             <li>
               <strong>Balance:&nbsp;</strong> {props.data.balance}
             </li>
-          </ul>
+          </ul> */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={props.handleClose}>
