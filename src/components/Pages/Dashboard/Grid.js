@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import useAxios from '../../../hooks/useAxios';
-import { userData } from './data';
 import { gridColumns } from './gridColumns';
+import { userData } from './Data';
 import Modal from '../../UI/Modal';
 
-const Grid = () => {
-  // const gridRef = useRef(null);
-  // const [showModal, setShowModal] = useState(false);
+const Grid = ({ setModalShow }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState('');
+  const gridRef = useRef(null);
   const {
-    // isLoading,
-    // isError,
+    //isLoading,
+    //isError,
     data: notes,
   } = useAxios('https://jsonplaceholder.typicode.com/users');
 
   let notesEl = [...notes, ...userData];
 
   const onDetailsClick = () => {};
+  // aria - selected('true');
 
   const gridOptions = {
     pagination: true,
@@ -28,21 +30,26 @@ const Grid = () => {
   const [columnDefs] = useState(gridColumns);
 
   const modalHandler = () => {
-    // setShowModal(true);
-    // if (typeof data !== 'undefined') {
-    //   setUserData(data);
-    //   setUserData((state) => {
-    //     setShow(true);
-    //     return state;
-    //   });
-    // } else {
-    //   return;
-    // }
+    const selectedNode = gridRef.current.api.getSelectedNodes();
+
+    if (selectedNode.length) {
+      const selectedData = selectedNode.map((node) => node.data);
+      setSelectedUser(selectedData[0]);
+      setSelectedUser((state) => {
+        setShowModal(true);
+        return state;
+      });
+    }
   };
 
   return (
     <>
-      <Modal showModal={true} />
+      <Modal
+        data={selectedUser}
+        show={showModal}
+        onHide={() => setShowModal(false)}
+      />
+
       <div className="container-fluid d-flex flex-column">
         <div className="bg-dark ">
           <a
@@ -62,6 +69,7 @@ const Grid = () => {
             style={{ height: 760, width: '100%' }}
           >
             <AgGridReact
+              ref={gridRef}
               rowData={notesEl}
               columnDefs={columnDefs}
               gridOptions={gridOptions}

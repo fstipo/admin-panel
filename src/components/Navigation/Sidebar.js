@@ -30,7 +30,7 @@ const Sidebar = () => {
               icon="folder2-open"
               to="/projects"
             />
-            <hr className="text-white border-2 w-75 mb-5" />
+            <hr className="text-white border-2  mb-5 align-center" />
             <NavigationLink
               title="Dashboard"
               icon="speedometer2"
@@ -43,7 +43,7 @@ const Sidebar = () => {
               icon="person-circle"
               to="/costumers"
             />
-            <hr className="text-white border-2 w-75 mb-5" />
+            <hr className="text-white border-2  mb-5 text-center" />
             <button
               className="navigation__collapse-button nav-link"
               type="button"
