@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-const details = (p) => (
+const detailsBtn = () => (
   <button className="btn btn-link">
-    <Link to="/details">...details</Link>
+    <Link to="/details" onClick={() => console.log('Klik')}>
+      ...details
+    </Link>
   </button>
 );
 
@@ -73,5 +75,9 @@ export const gridColumns = [
     filter: 'true',
     headerTooltip: 'Company',
   },
-  { field: 'details', headerTooltip: 'Details', cellRenderer: details },
+  {
+    field: 'details',
+    headerTooltip: 'Details',
+    cellRenderer: detailsBtn,
+  },
 ];

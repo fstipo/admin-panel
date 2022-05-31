@@ -14,32 +14,24 @@ function ModalShow(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <ul className="d-flex flex-column gap-2">
-          <li className="fs-5">
+        <ul className="d-flex flex-column gap-2 list-unstyled ">
+          <li className="fs-5 shadow-sm px-3 py-1 bg-white rounded">
             <strong>Full Name:&nbsp;</strong>
             {props.data.name}
           </li>
-          <li className="fs-5">
+          <li className="fs-5 shadow-sm px-3 py-1 bg-white rounded">
             <strong>Username:&nbsp; </strong> {props.data.username}
           </li>
-          <li className="fs-5">
+          <li className="fs-5 shadow-sm px-3 py-1 bg-white rounded">
             <strong>Email:&nbsp;</strong> {props.data.email}
           </li>
 
-          <li className="fs-5">
-            <strong>Phone:&nbsp;</strong> {props.data.phone}
-          </li>
-          <li className="fs-5">
+          <li className="fs-5 shadow-sm px-3 bg-white rounded">
             <strong>Website:&nbsp;</strong> {props.data.website}
           </li>
-          {/* <li className="fs-5">
-            <strong>City:&nbsp;</strong>
-            {props.data.address.city}
+          <li className="fs-5 shadow-sm px-3 py-1 bg-white rounded">
+            <strong>Phone:&nbsp;</strong> {props.data.phone}
           </li>
-          <li className="fs-5">
-            <strong>Street:&nbsp;</strong>
-            {props.data.address.street}
-          </li> */}
         </ul>
       </Modal.Body>
       <Modal.Footer>

@@ -3,14 +3,101 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import useAxios from '../../../hooks/useAxios';
-import { gridColumns } from './gridColumns';
+// import { gridColumns } from './gridColumns';
 import { userData } from './Data';
 import Modal from '../../UI/Modal';
 
-const Grid = ({ setModalShow }) => {
+import { Link } from 'react-router-dom';
+
+const Grid = ({ setModalShow, detailsHandler, onSaveId }) => {
+  const detailsBtn = () => (
+    <button className="btn btn-link">
+      <Link to="/details" onClick={userDetailsHandler}>
+        ...details
+      </Link>
+    </button>
+  );
+
+  const gridColumns = [
+    {
+      field: 'id',
+      checkboxSelection: true,
+      sortable: 'true',
+      filter: 'true',
+      headerTooltip: 'User id',
+      resizable: true,
+      width: 90,
+    },
+    {
+      headerName: 'Full Name',
+      field: 'name',
+      sortable: 'true',
+      filter: 'true',
+      headerTooltip: 'Name',
+    },
+    {
+      field: 'username',
+      sortable: 'true',
+      filter: 'true',
+      headerTooltip: 'Username',
+    },
+    {
+      field: 'email',
+      sortable: 'true',
+      filter: 'true',
+      headerTooltip: 'Email',
+    },
+    {
+      field: 'phone',
+      sortable: 'true',
+      filter: 'true',
+      headerTooltip: 'Phone',
+    },
+    {
+      field: 'website',
+      sortable: 'true',
+      filter: 'true',
+      headerTooltip: 'Website',
+    },
+    {
+      headerName: 'City',
+      field: 'address.city',
+      sortable: 'true',
+      filter: 'true',
+      headerTooltip: 'City',
+    },
+    {
+      headerName: 'Street',
+      field: 'address.street',
+      sortable: 'true',
+      filter: 'true',
+      headerTooltip: 'Street',
+    },
+    {
+      headerName: 'Zip code',
+      field: 'address.zipcode',
+      sortable: 'true',
+      filter: 'true',
+      headerTooltip: 'City zipCode',
+    },
+    {
+      field: 'company.name',
+      sortable: 'true',
+      filter: 'true',
+      headerTooltip: 'Company',
+    },
+    {
+      field: 'details',
+      headerTooltip: 'Details',
+      cellRenderer: detailsBtn,
+    },
+  ];
+  const [columnDefs] = useState(gridColumns);
   const [showModal, setShowModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState('');
+  const [selectedUserID, setSelectedUserID] = useState('');
   const gridRef = useRef(null);
+
   const {
     //isLoading,
     //isError,
@@ -19,15 +106,10 @@ const Grid = ({ setModalShow }) => {
 
   let notesEl = [...notes, ...userData];
 
-  const onDetailsClick = () => {};
-  // aria - selected('true');
-
   const gridOptions = {
     pagination: true,
     paginationAutoPageSize: true,
   };
-
-  const [columnDefs] = useState(gridColumns);
 
   const modalHandler = () => {
     const selectedNode = gridRef.current.api.getSelectedNodes();
@@ -37,6 +119,21 @@ const Grid = ({ setModalShow }) => {
       setSelectedUser(selectedData[0]);
       setSelectedUser((state) => {
         setShowModal(true);
+        setSelectedUserID(selectedData[0].id);
+        return state;
+      });
+    }
+  };
+
+  const userDetailsHandler = () => {
+    console.log('Ej tu sam');
+    const selectedNode = gridRef.current.api.getSelectedNodes();
+    if (selectedNode.length) {
+      const selectedData = selectedNode.map((node) => node.data);
+      console.log(selectedData[0].id);
+      setSelectedUser(selectedData[0]);
+      setSelectedUser((state) => {
+        setSelectedUserID(selectedData[0].id);
         return state;
       });
     }
