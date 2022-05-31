@@ -3,11 +3,14 @@ import React from 'react';
 import Header from '../../UI/Header';
 import Grid from './Grid';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+  const saveIdHandler = (id) => {
+    props.onSelectId(id);
+  };
   return (
     <>
       <Header name="Dashboard" icon="speedometer2" />
-      <Grid />
+      <Grid onSaveId={saveIdHandler} />
     </>
   );
 };

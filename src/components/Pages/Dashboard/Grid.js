@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
+import { dataContext } from '../../Navigation/NavigationRoutes';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -9,10 +10,11 @@ import Modal from '../../UI/Modal';
 
 import { Link } from 'react-router-dom';
 
-const Grid = ({ setModalShow, detailsHandler, onSaveId }) => {
+const Grid = (props) => {
+  const selectedUserId = useContext(dataContext);
   const detailsBtn = () => (
     <button className="btn btn-link">
-      <Link to="/details" onClick={userDetailsHandler}>
+      <Link to="/details/user/:selectedUserId" onClick={userDetailsHandler}>
         ...details
       </Link>
     </button>
@@ -95,7 +97,7 @@ const Grid = ({ setModalShow, detailsHandler, onSaveId }) => {
   const [columnDefs] = useState(gridColumns);
   const [showModal, setShowModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState('');
-  const [selectedUserID, setSelectedUserID] = useState('');
+
   const gridRef = useRef(null);
 
   const {
@@ -119,21 +121,17 @@ const Grid = ({ setModalShow, detailsHandler, onSaveId }) => {
       setSelectedUser(selectedData[0]);
       setSelectedUser((state) => {
         setShowModal(true);
-        setSelectedUserID(selectedData[0].id);
         return state;
       });
     }
   };
 
-  const userDetailsHandler = () => {
-    console.log('Ej tu sam');
+  const userDetailsHandler = (e) => {
     const selectedNode = gridRef.current.api.getSelectedNodes();
     if (selectedNode.length) {
       const selectedData = selectedNode.map((node) => node.data);
-      console.log(selectedData[0].id);
-      setSelectedUser(selectedData[0]);
+      props.onSaveId(selectedData[0].id);
       setSelectedUser((state) => {
-        setSelectedUserID(selectedData[0].id);
         return state;
       });
     }
