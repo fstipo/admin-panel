@@ -25,7 +25,7 @@ const NavigationRoutes = () => {
           element={<Dashboard onSelectId={selectedUserHandler} />}
         />
         <Route path="details" element={<Details userId={selectedUserId} />}>
-          <Route path="user/:selectedUserId" element={<h2>Hello</h2>} />
+          <Route path="id/:selectedUserId" element={<h2>Hello</h2>} />
         </Route>
 
         <Route path="orders" element={<Orders />} />

@@ -1,17 +1,42 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import Header from '../../UI/Header';
 
 const Details = ({ userId }) => {
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    // const url = 'https://api.adviceslip.com/advice';
+    const url = 'https://jsonplaceholder.typicode.com/users';
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        const user = json.filter((data) => userId === data.id);
+        if (user) {
+          setUserData(user[0]);
+          setUserData((state) => {
+            console.log(state);
+            return state;
+          });
+        }
+      } catch (error) {
+        console.log('error', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Header name="Details" icon="cloud-download" />
-      <div className="p-4 display-6">user Id:{userId}</div>
+
       <div className="container-flow">
         <div className="row ms-5">
           <div className="col-12">
-            <div className="my-5">
-              <h3>{/* User Details: {userData.first} {userData.last} */}</h3>
+            <div className="my-1">
+              <h3>User: {userData.name}</h3>
             </div>
 
             <form className="file-upload">
@@ -19,27 +44,29 @@ const Details = ({ userId }) => {
                 <div className="col-xl-8 mb-5 mb-xxl-10">
                   <div className="bg-secondary-soft px-4 py-3 rounded">
                     <div className="row g-3">
-                      <h4 className="mb-4 mt-0">Contact detail</h4>
+                      <h4 className="mb-4 mt-0">
+                        Contact detail {userData.id}
+                      </h4>
 
                       <div className="col-md-12">
-                        <label className="form-label">First Name *</label>
+                        <label className="form-label">Full Name *</label>
                         <input
                           type="text"
                           className="form-control"
                           placeholder=""
                           aria-label="First name"
-                          // defaultValue={userData.first}
+                          defaultValue={userData.name}
                         />
                       </div>
 
                       <div className="col-md-12">
-                        <label className="form-label">Last Name *</label>
+                        <label className="form-label">Username *</label>
                         <input
                           type="text"
                           className="form-control"
                           placeholder=""
                           aria-label="Last name"
-                          // defaultValue={userData.last}
+                          defaultValue={userData.username}
                         />
                       </div>
 
@@ -51,40 +78,29 @@ const Details = ({ userId }) => {
                           type="email"
                           className="form-control"
                           id="inputEmail4"
-                          // defaultValue={userData.email}
+                          defaultValue={userData.email}
                         />
                       </div>
 
                       <div className="col-md-12">
-                        <label className="form-label">Address *</label>
+                        <label className="form-label">City *</label>
                         <input
                           type="text"
                           className="form-control"
                           placeholder=""
-                          aria-label="Address"
-                          // defaultValue={userData.address}
+                          aria-label="City"
+                          defaultValue={userData.address}
                         />
                       </div>
 
                       <div className="col-md-12">
-                        <label className="form-label">Created *</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder=""
-                          aria-label="created"
-                          // defaultValue={userData.created}
-                        />
-                      </div>
-
-                      <div className="col-md-12">
-                        <label className="form-label">Balance *</label>
+                        <label className="form-label">Phone *</label>
                         <input
                           type="text"
                           className="form-control"
                           placeholder=""
                           aria-label="Phone number"
-                          // defaultValue={userData.balance}
+                          defaultValue={userData.phone}
                         />
                       </div>
                     </div>

@@ -1,5 +1,5 @@
-import React, { useState, useRef, useContext } from 'react';
-import { dataContext } from '../../Navigation/NavigationRoutes';
+import React, { useState, useRef } from 'react';
+
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -11,10 +11,14 @@ import Modal from '../../UI/Modal';
 import { Link } from 'react-router-dom';
 
 const Grid = (props) => {
-  const selectedUserId = useContext(dataContext);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState('');
+  const [userId, setUserId] = useState('');
+
+  const gridRef = useRef(null);
   const detailsBtn = () => (
     <button className="btn btn-link">
-      <Link to="/details/user/:selectedUserId" onClick={userDetailsHandler}>
+      <Link to={`/details/id/:${userId}`} onClick={userDetailsHandler}>
         ...details
       </Link>
     </button>
@@ -95,10 +99,6 @@ const Grid = (props) => {
     },
   ];
   const [columnDefs] = useState(gridColumns);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedUser, setSelectedUser] = useState('');
-
-  const gridRef = useRef(null);
 
   const {
     //isLoading,
@@ -131,6 +131,12 @@ const Grid = (props) => {
     if (selectedNode.length) {
       const selectedData = selectedNode.map((node) => node.data);
       props.onSaveId(selectedData[0].id);
+      setUserId(selectedData[0].id);
+      setUserId((state) => {
+        console.log('');
+        return state;
+      });
+      setSelectedUser(selectedData[0]);
       setSelectedUser((state) => {
         return state;
       });
