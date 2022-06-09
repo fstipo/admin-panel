@@ -6,13 +6,15 @@ const Details = ({ userId }) => {
 
   useEffect(() => {
     // const url = 'https://api.adviceslip.com/advice';
-    const url = 'https://jsonplaceholder.typicode.com/users';
+    const url = `https://jsonplaceholder.typicode.com/users`;
+    // const url = `https://jsonplaceholder.typicode.com/users/${userId}`;
+    // userID
 
     const fetchData = async () => {
       try {
         const response = await fetch(url);
         const json = await response.json();
-        if (userId >= 10) {
+        if (userId > 10) {
           console.log('Hello');
           return;
         }
@@ -94,7 +96,10 @@ const Details = ({ userId }) => {
                           className="form-control"
                           placeholder=""
                           aria-label="City"
-                          defaultValue={userData.address}
+                          // defaultValue={userData.address.city}
+                          defaultValue={
+                            !userData.address ? '' : userData.address.city
+                          }
                         />
                       </div>
 
