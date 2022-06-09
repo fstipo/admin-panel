@@ -12,16 +12,21 @@ const Details = ({ userId }) => {
       try {
         const response = await fetch(url);
         const json = await response.json();
+        if (userId >= 10) {
+          console.log('Hello');
+          return;
+        }
         const user = json.filter((data) => userId === data.id);
         if (user) {
-          setUserData(user[0]);
-          setUserData((state) => {
-            console.log(state);
-            return state;
-          });
+          setUserData((prevUser) => (prevUser = user[0]));
+          // setUserData((state) => {
+          //   console.log(state);
+          //   return state;
+          // });
+          console.log(user);
         }
       } catch (error) {
-        console.log('error', error);
+        console.log('error:', error);
       }
     };
 
