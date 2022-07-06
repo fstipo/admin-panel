@@ -43,7 +43,16 @@ const Sidebar = () => {
               icon="person-circle"
               to="/costumers"
             />
-            <hr className="text-white border-2  mb-5 text-center" />
+            <hr className="text-white border-2  mb-1 text-center" />
+            <button
+              className="mb-5 navigation__collapse-button btn-light"
+              type="button"
+              onClick={collapseNavbarHandler}
+            >
+              <i className="bi bi-box-arrow-in-right h5"></i>
+              <span className="navigation__link-title ms-2 h5">Login</span>
+            </button>
+          
             <button
               className="navigation__collapse-button nav-link"
               type="button"
@@ -54,9 +63,12 @@ const Sidebar = () => {
             </button>
           </div>
         </ul>
+       
       </nav>
     </div>
   );
 };
 
 export default Sidebar;
+
+

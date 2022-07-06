@@ -39,7 +39,7 @@ const Details = ({ userId }) => {
     <>
       <Header name="Details" icon="cloud-download" />
 
-      <div className="container-flow">
+      <div className="container">
         <div className="row ms-5">
           <div className="col-12">
             <div className="my-1">
