@@ -1,15 +1,24 @@
 import React from 'react';
+import { Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useIsAuthenticated } from '@azure/msal-react';
 import '../../App.css';
 import NavigationLink from '../UI/NavigationLink';
+import { SignInButton } from '../Auth/SignInButton';
+import { SignOutButton } from '../Auth/SignOutButton';
+
+
+
 
 const Sidebar = () => {
+  const isAuthenticated = useIsAuthenticated();
   const collapseNavbarHandler = (e) => {
     e.preventDefault();
     const navigation = document.querySelector('.section__navigation');
     navigation.classList.toggle('collapsed');
   };
 
+  
   return (
     <div className="section__navigation col bg-dark">
       <nav className="navbar-dark pt-4 d-flex flex-column">
@@ -42,17 +51,9 @@ const Sidebar = () => {
               title="Costumers"
               icon="person-circle"
               to="/costumers"
-            />
+              />
             <hr className="text-white border-2  mb-1 text-center" />
-            <button
-              className="mb-5 navigation__collapse-button btn-light"
-              type="button"
-              onClick={collapseNavbarHandler}
-            >
-              <i className="bi bi-box-arrow-in-right h5"></i>
-              <span className="navigation__link-title ms-2 h5">Login</span>
-            </button>
-          
+    
             <button
               className="navigation__collapse-button nav-link"
               type="button"
@@ -63,7 +64,10 @@ const Sidebar = () => {
             </button>
           </div>
         </ul>
-       
+        { isAuthenticated ? <SignOutButton /> : <SignInButton/> }
+            <p className='text-white'>Welcome</p>
+{/* console.log(uname); */}
+        
       </nav>
     </div>
   );
